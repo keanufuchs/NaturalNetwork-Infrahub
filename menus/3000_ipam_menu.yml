@@ -1,0 +1,72 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/menu/latest.json
+---
+# NaturalNetwork IPAM Menu Configuration
+# VLANs, Prefixes, IP Addresses
+apiVersion: infrahub.app/v1
+kind: Menu
+spec:
+  data:
+    # ==================== IPAM ====================
+    - namespace: Ipam
+      name: MainMenu
+      label: IPAM
+      icon: "mdi:ip-network"
+      order_weight: 4000
+      children:
+        data:
+          # -- IP Adressen --
+          - namespace: Ipam
+            name: AddressingGroup
+            label: IP Adressierung
+            icon: "mdi:ip"
+            order_weight: 4100
+            children:
+              data:
+                - namespace: Ipam
+                  name: Prefix
+                  label: IP Prefixe
+                  kind: IpamPrefix
+                  icon: "mdi:ip-network"
+                  order_weight: 4110
+                - namespace: Ipam
+                  name: IPAddress
+                  label: IP Adressen
+                  kind: IpamIPAddress
+                  icon: "mdi:ip"
+                  order_weight: 4120
+                - namespace: Ipam
+                  name: IPAddressPool
+                  label: IP Adress-Pools
+                  kind: CoreIPAddressPool
+                  icon: "mdi:ip-network-outline"
+                  order_weight: 4130
+
+          # -- Layer 2 --
+          - namespace: Ipam
+            name: Layer2Group
+            label: Layer 2
+            icon: "mdi:lan"
+            order_weight: 4200
+            children:
+              data:
+                - namespace: Ipam
+                  name: VLAN
+                  label: VLANs
+                  kind: IpamVLAN
+                  icon: "mdi:lan-pending"
+                  order_weight: 4210
+
+          # -- Routing --
+          - namespace: Ipam
+            name: RoutingGroup
+            label: Routing
+            icon: "mdi:router"
+            order_weight: 4300
+            children:
+              data:
+                - namespace: Ipam
+                  name: StaticRoute
+                  label: Statische Routen
+                  kind: IpamStaticRoute
+                  icon: "mdi:routes"
+                  order_weight: 4310

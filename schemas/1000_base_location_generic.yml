@@ -1,0 +1,68 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork Location Generic Schema
+# Generische Standort-Definition für Vererbung
+version: "1.0"
+
+generics:
+  # ==================== LOCATION GENERIC ====================
+  - name: Generic
+    namespace: Location
+    description: Generischer Standort (Land, Stadt, Gebäude, Raum)
+    label: Standort
+    icon: mingcute:location-line
+    include_in_menu: false
+    hierarchical: true
+    human_friendly_id:
+      - shortname__value
+    order_by:
+      - name__value
+    display_label: name__value
+    attributes:
+      - name: name
+        kind: Text
+        label: Name
+        order_weight: 100
+      - name: shortname
+        kind: Text
+        label: Kurzname
+        unique: true
+        order_weight: 105
+      - name: description
+        kind: Text
+        optional: true
+        order_weight: 110
+      - name: address
+        kind: Text
+        label: Adresse
+        optional: true
+        order_weight: 115
+
+  # ==================== LOCATION HOSTING ====================
+  - name: Hosting
+    namespace: Location
+    description: Standort der Geräte und Services hostet
+    include_in_menu: false
+    human_friendly_id:
+      - shortname__value
+    attributes:
+      - name: shortname
+        kind: Text
+        unique: true
+        order_weight: 105
+    relationships:
+      - name: prefixes
+        label: Präfixe
+        peer: IpamPrefix
+        cardinality: many
+        optional: true
+      - name: devices
+        label: Geräte
+        peer: DcimGenericDevice
+        cardinality: many
+        optional: true
+      - name: vlans
+        label: VLANs
+        peer: IpamVLAN
+        cardinality: many
+        optional: true

@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork DCIM Platform Schema
+# Plattformen mit OS-Typ (z.B. IOS, IOS-XE, NX-OS, EOS)
+version: "1.0"
+
+nodes:
+  # ==================== PLATFORM ====================
+  - name: Platform
+    namespace: Dcim
+    description: Betriebssystem-Typ und Automatisierungsinformationen
+    label: Plattform
+    icon: mdi:application-cog-outline
+    include_in_menu: true
+    human_friendly_id:
+      - plattform_name__value
+    display_label: plattform_name__value
+    order_by:
+      - plattform_name__value
+    uniqueness_constraints:
+      - [plattform_name__value]
+    attributes:
+      # ==================== IDENTITÄT (100-199) ====================
+      - name: plattform_name
+        label: Plattform
+        kind: Text
+        unique: true
+        order_weight: 100
+        description: Typ des Betriebssystems (z.B. IOS, IOS-XE, NX-OS, EOS)
+      - name: description
+        kind: Text
+        optional: true
+        order_weight: 110
+    relationships:
+      - name: operating_system
+        label: Betriebssystem
+        peer: DcimOperatingSystem
+        identifier: platform__operating_system
+        cardinality: one
+        kind: Attribute
+        optional: false
+        order_weight: 105
+        description: Betriebssystem-Objekt (z.B. Cisco IOS-XE)
+      - name: vendor
+        label: Vendor
+        peer: OrganizationVendor
+        cardinality: one
+        kind: Attribute
+        optional: false
+        order_weight: 105
+        description: Hersteller dieser Plattform

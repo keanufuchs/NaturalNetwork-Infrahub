@@ -1,0 +1,158 @@
+---
+# DcimSVIInterface: SVIs gemäß docs/05_verteilung.md (5.6 Layer 3, 5.7 Management-SVIs)
+# Core: alle VLAN-Gateways; Dist/Access: nur Management-SVI (VLAN 10)
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: DcimSVIInterface
+  data:
+    # ==================== CORE BONN (SW-BN-CORE-01) ====================
+    - name: Vlan10
+      device: SW-BN-CORE-01
+      vlan: [Management, "10"]
+      description: Management Bonn
+      is_management: true
+      ip_addresses:
+        data:
+          - address: 10.20.10.1/24
+            description: SW-BN-CORE-01 Management Gateway
+    - name: Vlan100
+      device: SW-BN-CORE-01
+      vlan: [Users, "100"]
+      description: Users Bonn
+      is_management: false
+      ip_addresses:
+        data:
+          - address: 10.20.100.1/24
+            description: SW-BN-CORE-01 Users Gateway
+    - name: Vlan120
+      device: SW-BN-CORE-01
+      vlan: [Printers, "120"]
+      description: Printers Bonn
+      is_management: false
+      ip_addresses:
+        data:
+          - address: 10.20.120.1/24
+            description: SW-BN-CORE-01 Printers Gateway
+
+    # ==================== CORE KÖLN (SW-KN-CORE-01) ====================
+    - name: Vlan10
+      device: SW-KN-CORE-01
+      vlan: [Management, "10"]
+      description: Management Köln
+      is_management: true
+      ip_addresses:
+        data:
+          - address: 10.10.10.1/24
+            description: SW-KN-CORE-01 Management Gateway
+    - name: Vlan100
+      device: SW-KN-CORE-01
+      vlan: [Users, "100"]
+      description: Users Köln
+      is_management: false
+      ip_addresses:
+        data:
+          - address: 10.10.100.1/24
+            description: SW-KN-CORE-01 Users Gateway
+    - name: Vlan120
+      device: SW-KN-CORE-01
+      vlan: [Printers, "120"]
+      description: Printers Köln
+      is_management: false
+      ip_addresses:
+        data:
+          - address: 10.10.120.1/24
+            description: SW-KN-CORE-01 Printers Gateway
+    - name: Vlan130
+      device: SW-KN-CORE-01
+      vlan: [Servers, "130"]
+      description: Servers Köln
+      is_management: false
+      ip_addresses:
+        data:
+          - address: 10.10.130.1/24
+            description: SW-KN-CORE-01 Servers Gateway
+
+    # ==================== DISTRIBUTION / ACCESS – nur Management (Vlan10) ====================
+    - name: Vlan10
+      device: SW-BN-DIST-01
+      vlan: [Management, "10"]
+      description: Management
+      is_management: true
+      ip_addresses:
+        data:
+          - address: 10.20.10.2/24
+            description: SW-BN-DIST-01 Management
+    - name: Vlan10
+      device: SW-BN-DIST-02
+      vlan: [Management, "10"]
+      description: Management
+      is_management: true
+      ip_addresses:
+        data:
+          - address: 10.20.10.3/24
+            description: SW-BN-DIST-02 Management
+    - name: Vlan10
+      device: SW-BN-01
+      vlan: [Management, "10"]
+      description: Management
+      is_management: true
+      ip_addresses:
+        data:
+          - address: 10.20.10.11/24
+            description: SW-BN-01 Management
+    - name: Vlan10
+      device: SW-BN-02
+      vlan: [Management, "10"]
+      description: Management
+      is_management: true
+      ip_addresses:
+        data:
+          - address: 10.20.10.12/24
+            description: SW-BN-02 Management
+
+    - name: Vlan10
+      device: SW-KN-DIST-01
+      vlan: [Management, "10"]
+      description: Management
+      is_management: true
+      ip_addresses:
+        data:
+          - address: 10.10.10.2/24
+            description: SW-KN-DIST-01 Management
+    - name: Vlan10
+      device: SW-KN-DIST-02
+      vlan: [Management, "10"]
+      description: Management
+      is_management: true
+      ip_addresses:
+        data:
+          - address: 10.10.10.3/24
+            description: SW-KN-DIST-02 Management
+    - name: Vlan10
+      device: SW-KN-01
+      vlan: [Management, "10"]
+      description: Management
+      is_management: true
+      ip_addresses:
+        data:
+          - address: 10.10.10.11/24
+            description: SW-KN-01 Management
+    - name: Vlan10
+      device: SW-KN-02
+      vlan: [Management, "10"]
+      description: Management
+      is_management: true
+      ip_addresses:
+        data:
+          - address: 10.10.10.12/24
+            description: SW-KN-02 Management
+    - name: Vlan10
+      device: SW-KN-03
+      vlan: [Management, "10"]
+      description: Management
+      is_management: true
+      ip_addresses:
+        data:
+          - address: 10.10.10.13/24
+            description: SW-KN-03 Management

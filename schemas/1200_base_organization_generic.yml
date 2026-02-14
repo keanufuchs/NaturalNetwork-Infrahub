@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork Organization Generic Schema
+# Generische Organisation für Vererbung
+version: "1.0"
+
+generics:
+  # ==================== ORGANIZATION GENERIC ====================
+  - name: Generic
+    namespace: Organization
+    label: Organisation
+    description: Eine Organisation (Firma, Hersteller)
+    human_friendly_id:
+      - name__value
+    order_by:
+      - name__value
+    display_label: name__value
+    icon: mdi:domain
+    include_in_menu: false
+    attributes:
+      - name: name
+        kind: Text
+        unique: true
+        order_weight: 100
+      - name: description
+        kind: Text
+        optional: true
+        order_weight: 110

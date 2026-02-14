@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork Endpoint Printer Schema
+# Drucker oder Multifunktionsgerät
+version: "1.0"
+
+nodes:
+  # ==================== PRINTER ====================
+  - name: Printer
+    namespace: Endpoint
+    description: Drucker oder Multifunktionsgerät
+    label: Drucker
+    icon: mdi:printer
+    inherit_from:
+      - EndpointEndpoint
+    include_in_menu: true
+    attributes:
+      - name: printer_type
+        kind: Dropdown
+        label: Druckertyp
+        order_weight: 400
+        choices:
+          - name: laser
+            label: Laserdrucker
+          - name: inkjet
+            label: Tintenstrahldrucker
+          - name: mfp
+            label: Multifunktionsgerät
+          - name: plotter
+            label: Plotter
+      - name: model
+        kind: Text
+        label: Modell
+        optional: true
+        order_weight: 410
+      - name: ip_printing
+        kind: Boolean
+        label: Netzwerkdruck
+        default_value: true
+        order_weight: 420

@@ -1,0 +1,17 @@
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: DcimPlatform
+  data:
+    - plattform_name: Catalyst 9300 Series
+      description: Cisco Catalyst 9300 Series Switches
+      operating_system: IOS-XE
+      vendor: Cisco
+    - plattform_name: Catalyst 9500 Series
+      description: Cisco Catalyst 9500 Series (Core)
+      operating_system: IOS-XE
+      vendor: Cisco
+    - plattform_name: Catalyst 9200 Series
+      description: Cisco Catalyst 9200 Series (Access)
+      operating_system: IOS-XE
+      vendor: Cisco

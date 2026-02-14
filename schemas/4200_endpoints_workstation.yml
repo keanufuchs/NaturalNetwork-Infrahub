@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork Endpoint Workstation Schema
+# Arbeitsplatzrechner/Client PC
+version: "1.0"
+
+nodes:
+  # ==================== WORKSTATION (PC) ====================
+  - name: Workstation
+    namespace: Endpoint
+    description: Arbeitsplatzrechner/Client PC
+    label: Arbeitsplatz
+    icon: mdi:desktop-classic
+    inherit_from:
+      - EndpointEndpoint
+    include_in_menu: true
+    attributes:
+      - name: workstation_type
+        kind: Dropdown
+        label: Gerätetyp
+        order_weight: 400
+        choices:
+          - name: desktop
+            label: Desktop PC
+          - name: laptop
+            label: Laptop
+          - name: thin_client
+            label: Thin Client
+      - name: operating_system
+        kind: Text
+        label: Betriebssystem
+        optional: true
+        order_weight: 410
+      - name: user
+        kind: Text
+        label: Benutzer
+        optional: true
+        order_weight: 420

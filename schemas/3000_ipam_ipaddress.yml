@@ -1,0 +1,57 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork IPAM IP Address Schema
+# IP-Adressen (IPv4/IPv6)
+version: "1.0"
+
+nodes:
+  # ==================== IP ADDRESS ====================
+  - name: IPAddress
+    namespace: Ipam
+    description: IP-Adresse (IPv4/IPv6)
+    label: IP-Adresse
+    icon: mdi:ip
+    include_in_menu: true
+    order_by:
+      - address__value
+    display_label: address__value
+    inherit_from:
+      - BuiltinIPAddress
+    uniqueness_constraints:
+      - [address__value, ip_namespace]
+    human_friendly_id:
+      - address__value
+      - ip_namespace__name__value
+    attributes:
+      - name: description
+        kind: Text
+        optional: true
+        order_weight: 110
+      - name: status
+        kind: Dropdown
+        default_value: active
+        order_weight: 112
+        choices:
+          - name: active
+            label: Aktiv
+            color: "#7fbf7f"
+          - name: reserved
+            label: Reserviert
+            color: "#ffff7f"
+          - name: deprecated
+            label: Veraltet
+            color: "#bfbfbf"
+          - name: dhcp
+            label: DHCP
+            color: "#7f7fff"
+    # relationships:
+    #   - name: interface
+    #     peer: DcimInterface
+    #     optional: true
+    #     cardinality: one
+    #     kind: Attribute
+    #   - name: device
+    #     peer: DcimGenericDevice
+    #     optional: true
+    #     cardinality: one
+    #     kind: Attribute

@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork DCIM Model Schema
+# Hardware-Modelle (z.B. Catalyst 9300-48P, Nexus 9300)
+version: "1.0"
+
+nodes:
+  # ==================== MODEL ====================
+  - name: Model
+    namespace: Dcim
+    description: Hardware-Modell (z.B. Catalyst 9300-48P)
+    label: Modell
+    icon: mdi:poll
+    include_in_menu: true
+    human_friendly_id:
+      - vendor__name__value
+      - name__value
+    display_label: name__value
+    order_by:
+      - vendor__name__value
+      - name__value
+    uniqueness_constraints:
+      - [vendor, name__value]
+    attributes:
+      # ==================== IDENTITÄT (100-199) ====================
+      - name: name
+        label: Modellname
+        kind: Text
+        order_weight: 100
+        description: Hardware-Modellbezeichnung (z.B. C9300-48P)
+      - name: description
+        kind: Text
+        optional: true
+        order_weight: 110
+      # ==================== HARDWARE (400-499) ====================
+      - name: part_number
+        label: Artikelnummer
+        kind: Text
+        optional: true
+        order_weight: 400
+      - name: height_u
+        label: Höhe (HE)
+        kind: Number
+        default_value: 1
+        order_weight: 410
+      - name: port_count
+        label: Port-Anzahl
+        kind: Number
+        optional: true
+        order_weight: 420
+        description: Anzahl physischer Ports
+      - name: port_speed
+        label: Port-Geschwindigkeit
+        kind: Dropdown
+        optional: true
+        order_weight: 430
+        choices:
+          - name: "100m"
+            label: 100 Mbps
+          - name: "1g"
+            label: 1 Gbps
+          - name: "10g"
+            label: 10 Gbps
+          - name: "25g"
+            label: 25 Gbps
+          - name: "40g"
+            label: 40 Gbps
+          - name: "100g"
+            label: 100 Gbps
+      - name: uplink_count
+        label: Uplink-Anzahl
+        kind: Number
+        optional: true
+        order_weight: 440
+        description: Anzahl Uplink-Ports
+      - name: uplink_speed
+        label: Uplink-Geschwindigkeit
+        kind: Dropdown
+        optional: true
+        order_weight: 450
+        choices:
+          - name: "1g"
+            label: 1 Gbps
+          - name: "10g"
+            label: 10 Gbps
+          - name: "25g"
+            label: 25 Gbps
+          - name: "40g"
+            label: 40 Gbps
+          - name: "100g"
+            label: 100 Gbps
+    relationships:
+      - name: vendor
+        label: Vendor
+        peer: OrganizationVendor
+        cardinality: one
+        kind: Attribute
+        optional: false
+        order_weight: 105
+        description: Hersteller dieses Modells
+      - name: default_platform
+        label: Plattform
+        peer: DcimPlatform
+        identifier: model__default_platform
+        cardinality: one
+        kind: Attribute
+        optional: true
+        order_weight: 115
+        description: Standard-Betriebssystem für dieses Modell

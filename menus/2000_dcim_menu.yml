@@ -1,0 +1,78 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/menu/latest.json
+---
+# NaturalNetwork DCIM Menu Configuration
+# Devices and Interfaces
+apiVersion: infrahub.app/v1
+kind: Menu
+spec:
+  data:
+    # ==================== DCIM (Netzwerkgeräte) ====================
+    - namespace: Dcim
+      name: MainMenu
+      label: Netzwerk
+      icon: "mdi:server"
+      order_weight: 3000
+      children:
+        data:
+          # -- Switches --
+          - namespace: Dcim
+            name: SwitchesGroup
+            label: Switches
+            icon: "clarity:network-switch-solid"
+            order_weight: 3100
+            children:
+              data:
+                - namespace: Dcim
+                  name: Switch
+                  label: Switches
+                  kind: DcimSwitch
+                  icon: "clarity:network-switch-solid"
+                  order_weight: 3110
+
+          # -- Interfaces --
+          - namespace: Dcim
+            name: InterfacesGroup
+            label: Interfaces
+            icon: "mdi:ethernet"
+            order_weight: 3200
+            children:
+              data:
+                - namespace: Dcim
+                  name: PhysicalInterface
+                  label: Physical Interfaces
+                  kind: DcimPhysicalInterface
+                  icon: "mdi:ethernet-cable"
+                  order_weight: 3210
+                - namespace: Dcim
+                  name: SVIInterface
+                  label: SVI Interfaces
+                  kind: DcimSVIInterface
+                  icon: "mdi:lan"
+                  order_weight: 3220
+
+          # -- Hardware & Software --
+          - namespace: Dcim
+            name: HardwareGroup
+            label: Hardware & Software
+            icon: "mdi:chip"
+            order_weight: 3300
+            children:
+              data:
+                - namespace: Dcim
+                  name: OperatingSystem
+                  label: Betriebssysteme
+                  kind: DcimOperatingSystem
+                  icon: "mdi:cog"
+                  order_weight: 3305
+                - namespace: Dcim
+                  name: Platform
+                  label: Plattformen
+                  kind: DcimPlatform
+                  icon: "mdi:chip"
+                  order_weight: 3310
+                - namespace: Dcim
+                  name: Model
+                  label: Modelle
+                  kind: DcimModel
+                  icon: "mdi:poll"
+                  order_weight: 3320

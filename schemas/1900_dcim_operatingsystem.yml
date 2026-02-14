@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork DCIM OperatingSystem Schema
+# Betriebssysteme (z.B. IOS, IOS-XE, NX-OS, EOS)
+version: "1.0"
+
+nodes:
+  # ==================== OPERATING SYSTEM ====================
+  - name: OperatingSystem
+    namespace: Dcim
+    description: Betriebssystem (z.B. IOS, IOS-XE, NX-OS)
+    label: Betriebssystem
+    icon: mdi:cog
+    include_in_menu: true
+    human_friendly_id:
+      - name__value
+    display_label: name__value
+    order_by:
+      - name__value
+    uniqueness_constraints:
+      - [name__value]
+    attributes:
+      # ==================== IDENTITÄT (100-199) ====================
+      - name: name
+        label: OS Name
+        kind: Text
+        unique: true
+        order_weight: 100
+        description: Name des Betriebssystems (z.B. IOS-XE, NX-OS, EOS)
+      - name: description
+        kind: Text
+        optional: true
+        order_weight: 110
+      # ==================== AUTOMATISIERUNG (200-299) ====================
+      - name: terraform_provider
+        label: Terraform Provider
+        kind: Text
+        optional: true
+        order_weight: 210
+        description: Terraform Provider für Automatisierung
+    relationships:
+      - name: vendor
+        label: Vendor
+        peer: OrganizationVendor
+        cardinality: one
+        kind: Attribute
+        optional: false
+        order_weight: 105
+        description: Hersteller dieses Betriebssystems

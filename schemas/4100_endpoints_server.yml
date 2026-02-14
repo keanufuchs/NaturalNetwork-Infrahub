@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork Endpoint Server Schema
+# Server (physisch oder virtuell)
+version: "1.0"
+
+nodes:
+  # ==================== SERVER ====================
+  - name: Server
+    namespace: Endpoint
+    description: Server (physisch oder virtuell)
+    label: Server
+    icon: mdi:server
+    inherit_from:
+      - EndpointEndpoint
+    include_in_menu: true
+    attributes:
+      - name: server_type
+        kind: Dropdown
+        label: Server-Typ
+        order_weight: 400
+        choices:
+          - name: physical
+            label: Physisch
+            color: "#7f7fff"
+          - name: virtual
+            label: Virtuell
+            color: "#bf7fbf"
+          - name: container
+            label: Container
+            color: "#7fbfbf"
+      - name: operating_system
+        kind: Text
+        label: Betriebssystem
+        optional: true
+        order_weight: 410
+      - name: function
+        kind: Dropdown
+        label: Funktion
+        optional: true
+        order_weight: 420
+        choices:
+          - name: application
+            label: Applikationsserver
+          - name: database
+            label: Datenbankserver
+          - name: file
+            label: Fileserver
+          - name: web
+            label: Webserver
+          - name: monitoring
+            label: Monitoring
+          - name: backup
+            label: Backup

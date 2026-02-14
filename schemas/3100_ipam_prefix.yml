@@ -1,0 +1,92 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork IPAM Prefix Schema
+# IP-Netzwerke mit Subnetzmaske
+version: "1.0"
+
+nodes:
+  # ==================== PREFIX ====================
+  - name: Prefix
+    namespace: Ipam
+    description: IP-Netzwerk mit Subnetzmaske
+    label: Präfix
+    icon: mdi:ip-network
+    include_in_menu: true
+    order_by:
+      - prefix__value
+    display_label: prefix__value
+    inherit_from:
+      - BuiltinIPPrefix
+    uniqueness_constraints:
+      - [prefix__value, ip_namespace]
+    human_friendly_id:
+      - prefix__value
+      - ip_namespace__name__value
+    attributes:
+      - name: description
+        kind: Text
+        optional: true
+        order_weight: 110
+      - name: status
+        kind: Dropdown
+        default_value: active
+        order_weight: 112
+        choices:
+          - name: active
+            label: Aktiv
+            color: "#7fbf7f"
+          - name: reserved
+            label: Reserviert
+            color: "#ffff7f"
+          - name: deprecated
+            label: Veraltet
+            color: "#bfbfbf"
+      - name: role
+        kind: Dropdown
+        optional: true
+        order_weight: 114
+        choices:
+          - name: management
+            label: Management
+            description: Switch-Management Netzwerk
+            color: "#AEC6CF"
+          - name: user
+            label: User
+            description: Arbeitsplatz-Netzwerk
+            color: "#77DD77"
+          - name: server
+            label: Server
+            description: Server-Netzwerk
+            color: "#9678B6"
+          - name: printer
+            label: Drucker
+            description: Drucker-Netzwerk
+            color: "#FFB347"
+          - name: iot
+            label: IoT/Kameras
+            description: IoT und Überwachungskameras
+            color: "#F49AC2"
+          - name: intersite
+            label: Inter-Site
+            description: Standortverbindung
+            color: "#779ECB"
+    relationships:
+      - name: location
+        peer: LocationSite
+        optional: true
+        cardinality: one
+        kind: Attribute
+        order_weight: 600
+      - name: vlan
+        peer: IpamVLAN
+        optional: true
+        cardinality: one
+        kind: Attribute
+        order_weight: 200
+      - name: gateway
+        label: Gateway
+        peer: IpamIPAddress
+        optional: true
+        cardinality: one
+        kind: Attribute
+        order_weight: 210

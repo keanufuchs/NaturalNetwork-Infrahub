@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork DCIM Switch Schema
+# Einheitliches Switch-Schema für alle Layer
+version: "1.0"
+
+nodes:
+  # ==================== SWITCH (Unified L2/L3) ====================
+  - name: Switch
+    namespace: Dcim
+    description: Netzwerk-Switch (L2 oder L3)
+    label: Switch
+    icon: clarity:network-switch-solid
+    inherit_from:
+      - DcimGenericDevice
+    include_in_menu: true
+    attributes:
+      - name: status
+        kind: Dropdown
+        default_value: active
+        order_weight: 112
+        choices:
+          - name: active
+            label: Aktiv
+            color: "#7fbf7f"
+          - name: provisioning
+            label: Provisionierung
+            color: "#ffff7f"
+          - name: maintenance
+            label: Wartung
+            color: "#ffd27f"
+          - name: offline
+            label: Offline
+            color: "#bfbfbf"
+      - name: role
+        kind: Dropdown
+        order_weight: 114
+        choices:
+          - name: core
+            label: Core Switch
+            description: Kernschicht (Routing/Aggregation)
+            color: "#ff9999"
+          - name: distribution
+            label: Distribution Switch
+            description: Verteilschicht (VLAN-Aggregation)
+            color: "#99ccff"
+          - name: access
+            label: Access Switch
+            description: Zugriffsschicht (Endgeräte)
+            color: "#99ff99"
+      - name: layer_capability
+        label: Layer-Fähigkeit
+        kind: Dropdown
+        default_value: l2
+        order_weight: 116
+        choices:
+          - name: l2
+            label: Layer 2 only
+            description: Switching ohne Routing
+            color: "#99ccff"
+          - name: l2_l3
+            label: Layer 2 + 3
+            description: Switching mit Basic Routing (SVIs)
+            color: "#ffcc99"
+          - name: l3
+            label: Layer 3
+            description: Full Routing
+            color: "#ff9999"
+      - name: routing_enabled
+        label: Routing aktiviert
+        kind: Boolean
+        default_value: false
+        optional: true
+        order_weight: 210
+        description: Inter-VLAN Routing aktiv (nur bei L3-Capability)
+    relationships:
+      - name: interfaces
+        label: Physische Interfaces
+        peer: DcimPhysicalInterface
+        optional: true
+        cardinality: many
+        identifier: device__interface
+        kind: Component
+        description: Physische Interfaces auf diesem Switch.
+      - name: svi_interfaces
+        label: SVIs
+        peer: DcimSVIInterface
+        optional: true
+        cardinality: many
+        identifier: device__svi_interface
+        kind: Component
+        description: SVI-Interfaces auf diesem Switch.
+      - name: vlans
+        label: VLANs
+        peer: IpamVLAN
+        optional: true
+        cardinality: many
+        description: VLANs auf diesem Switch

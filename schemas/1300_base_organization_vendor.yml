@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork Organization Vendor Schema
+# Vendors (Hersteller/Lieferanten von Netzwerkgeräten)
+version: "1.0"
+
+nodes:
+  # ==================== VENDOR ====================
+  - name: Vendor
+    namespace: Organization
+    description: Hersteller oder Lieferant von Netzwerkgeräten
+    label: Vendor
+    icon: mdi:factory
+    inherit_from:
+      - OrganizationGeneric
+    include_in_menu: true
+    menu_placement: OrganizationGeneric
+    attributes:
+      - name: website
+        label: Website
+        kind: URL
+        optional: true
+        order_weight: 300
+      - name: support_url
+        label: Support URL
+        kind: URL
+        optional: true
+        order_weight: 310
+    relationships:
+      - name: models
+        label: Modelle
+        peer: DcimModel
+        cardinality: many
+        optional: true
+      - name: operating_systems
+        label: Betriebssysteme
+        peer: DcimOperatingSystem
+        cardinality: many
+        optional: true

@@ -1,0 +1,81 @@
+---
+# Example: Cisco Catalyst 9300-48P-E Switch Configuration
+# This demonstrates the complete hierarchy:
+# Vendor (Cisco) → OS (IOS-XE) → Platform (Catalyst 9300 Series) → Model (C9300-48P-E) → Switch (SW-KN-CORE-01)
+
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: LocationSite
+  data:
+    - name: Köln
+      shortname: KN
+      description: Köln Site
+      site_type: headquarters
+
+---
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: OrganizationVendor
+  data:
+    - name: Cisco
+      description: Cisco Systems, Inc.
+
+---
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: DcimOperatingSystem
+  data:
+    - name: IOS-XE
+      description: Cisco IOS XE Operating System
+      vendor: Cisco
+      napalm_driver: ios
+      netmiko_device_type: cisco_ios
+      ansible_network_os: cisco.ios.ios
+
+---
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: DcimPlatform
+  data:
+    - plattform_name: Catalyst 9300 Series
+      description: Cisco Catalyst 9300 Series Switches
+      operating_system: IOS-XE
+
+---
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: DcimModel
+  data:
+    - name: C9300-48P-E
+      vendor: Cisco
+      description: Cisco Catalyst 9300-48P Ethernet Switch
+      part_number: C9300-48P-E
+      height_u: 1
+      port_count: 48
+      port_speed: "1g"
+      uplink_count: 4
+      uplink_speed: "10g"
+      layer3_capable: true
+      default_platform: Catalyst 9300 Series
+
+---
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: DcimSwitch
+  data:
+    - name: SW-KN-CORE-01
+      location: KN
+      model:
+        - Cisco
+        - C9300-48P-E
+      status: active
+      role: core
+      layer_capability: l3
+      routing_enabled: true
+      description: Core Switch Köln Site - Cisco Catalyst 9300

@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork Endpoint IoT Device Schema
+# IoT-Gerät (Sensoren, Smart Devices)
+version: "1.0"
+
+nodes:
+  # ==================== IOT DEVICE ====================
+  - name: IoTDevice
+    namespace: Endpoint
+    description: IoT-Gerät (Sensoren, Smart Devices)
+    label: IoT-Gerät
+    icon: mdi:chip
+    inherit_from:
+      - EndpointEndpoint
+    include_in_menu: true
+    attributes:
+      - name: device_category
+        kind: Dropdown
+        label: Kategorie
+        order_weight: 400
+        choices:
+          - name: sensor
+            label: Sensor
+          - name: actuator
+            label: Aktor
+          - name: gateway
+            label: IoT Gateway
+          - name: controller
+            label: Controller
+          - name: other
+            label: Sonstiges
+      - name: protocol
+        kind: Dropdown
+        label: Protokoll
+        optional: true
+        order_weight: 410
+        choices:
+          - name: mqtt
+            label: MQTT
+          - name: coap
+            label: CoAP
+          - name: http
+            label: HTTP/REST
+          - name: modbus
+            label: Modbus

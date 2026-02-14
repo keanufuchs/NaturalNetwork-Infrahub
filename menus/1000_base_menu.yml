@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/menu/latest.json
+---
+# NaturalNetwork Base Menu Configuration
+# Organizations and Locations
+apiVersion: infrahub.app/v1
+kind: Menu
+spec:
+  data:
+    # ==================== STANDORTE ====================
+    - namespace: Location
+      name: MainMenu
+      label: Standorte
+      icon: "mdi:map-marker"
+      order_weight: 1000
+      children:
+        data:
+          - namespace: Location
+            name: Site
+            label: Standorte
+            kind: LocationSite
+            icon: "mdi:office-building"
+            order_weight: 1100
+
+    # ==================== ORGANISATION ====================
+    - namespace: Organization
+      name: MainMenu
+      label: Vendor
+      icon: "mdi:domain"
+      order_weight: 1500
+      children:
+        data:
+          - namespace: Organization
+            name: Vendor
+            label: Vendors
+            kind: OrganizationVendor
+            icon: "mdi:factory"
+            order_weight: 1600

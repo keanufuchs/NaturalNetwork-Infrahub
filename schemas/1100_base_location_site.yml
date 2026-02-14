@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork Location Site Schema
+# Physische Standorte (z.B. Bonn, Köln)
+version: "1.0"
+
+nodes:
+  # ==================== LOCATION SITE ====================
+  - name: Site
+    namespace: Location
+    description: Physischer Standort (z.B. Bonn, Köln)
+    label: Standort
+    icon: mdi:office-building
+    inherit_from:
+      - LocationGeneric
+      - LocationHosting
+    include_in_menu: true
+    attributes:
+      - name: site_type
+        kind: Dropdown
+        label: Standorttyp
+        order_weight: 120
+        choices:
+          - name: headquarters
+            label: Hauptstandort
+            description: Zentraler Firmenstandort
+            color: "#7f7fff"
+          - name: branch
+            label: Nebenstandort
+            description: Filiale oder Außenstelle
+            color: "#7fbf7f"
+          - name: datacenter
+            label: Rechenzentrum
+            description: Dediziertes Rechenzentrum
+            color: "#bf7fbf"

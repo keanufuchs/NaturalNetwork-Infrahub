@@ -1,0 +1,8 @@
+---
+# IpamPrefix: Standalone-Prefixe (optional).
+# Die für CoreIPAddressPool genutzten Prefixe sind in 05_ip_address_pools.yml als nested resources definiert.
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: IpamPrefix
+  data: []

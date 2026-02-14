@@ -1,0 +1,88 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork DCIM Physical Interface Schema
+# Physisches Netzwerk-Interface
+version: "1.0"
+
+nodes:
+  # ==================== PHYSICAL INTERFACE ====================
+  - name: PhysicalInterface
+    namespace: Dcim
+    description: Physisches Netzwerk-Interface
+    label: Physisches Interface
+    icon: mdi:ethernet
+    display_label: "{{ device__name__value }}_{{ name__value }}"
+    inherit_from:
+      - DcimInterface
+    include_in_menu: false
+    attributes:
+      - name: speed
+        kind: Dropdown
+        label: Geschwindigkeit
+        optional: true
+        order_weight: 200
+        choices:
+          - name: "100m"
+            label: 100 Mbps
+          - name: "1g"
+            label: 1 Gbps
+          - name: "10g"
+            label: 10 Gbps
+          - name: "25g"
+            label: 25 Gbps
+          - name: "40g"
+            label: 40 Gbps
+          - name: "100g"
+            label: 100 Gbps
+      - name: l2_mode
+        kind: Dropdown
+        label: Layer 2 Modus
+        optional: true
+        order_weight: 210
+        choices:
+          - name: access
+            label: Access
+            description: Einzelnes VLAN
+          - name: trunk
+            label: Trunk
+            description: Mehrere VLANs (802.1Q)
+          - name: routed
+            label: Routed
+            description: Layer 3 Interface
+      - name: mac_address
+        kind: Text
+        label: MAC-Adresse
+        optional: true
+        order_weight: 220
+    relationships:
+      - name: ip_addresses
+        peer: IpamIPAddress
+        label: IP-Adressen
+        cardinality: many
+        kind: Attribute
+        optional: true
+        order_weight: 230
+      - name: untagged_vlan
+        peer: IpamVLAN
+        label: Access VLAN
+        identifier: interface__untagged_vlan
+        cardinality: one
+        kind: Attribute
+        optional: true
+        order_weight: 240
+      - name: tagged_vlans
+        peer: IpamVLAN
+        label: Trunk VLANs (allowed)
+        identifier: interface__tagged_vlans
+        cardinality: many
+        kind: Attribute
+        optional: true
+        order_weight: 250
+      - name: connected_endpoint
+        peer: DcimInterface
+        label: Verbunden mit
+        cardinality: one
+        kind: Attribute
+        optional: true
+        order_weight: 260
+        description: Gegenstelle (anderes Interface), z. B. Switch-Port oder Endgerät. Optional – Load-Reihenfolge verhindert Setzen in objects/07.

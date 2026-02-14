@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork DCIM SVI Interface Schema
+# Switch Virtual Interface (VLAN Gateway) – eigenständig, erbt nicht von DcimInterface
+version: "1.0"
+
+nodes:
+  # ==================== SVI (VLAN INTERFACE) ====================
+  - name: SVIInterface
+    namespace: Dcim
+    description: Switch Virtual Interface (VLAN Gateway)
+    label: SVI Interface
+    icon: mdi:lan
+    include_in_menu: false
+    display_label: "{{ device__name__value }}_{{ name__value }}"
+    order_by:
+      - device__name__value
+      - name__value
+    uniqueness_constraints:
+      - [device, name__value]
+    human_friendly_id:
+      - device__name__value
+      - name__value
+    attributes:
+      - name: name
+        kind: Text
+        order_weight: 100
+      - name: description
+        kind: Text
+        optional: true
+        order_weight: 110
+      - name: enabled
+        kind: Boolean
+        default_value: true
+        order_weight: 112
+      - name: status
+        kind: Dropdown
+        default_value: active
+        order_weight: 114
+        choices:
+          - name: active
+            label: Aktiv
+            color: "#7fbf7f"
+          - name: disabled
+            label: Deaktiviert
+            color: "#bfbfbf"
+      - name: mtu
+        label: MTU
+        kind: Number
+        default_value: 1500
+        optional: true
+        order_weight: 200
+      - name: is_management
+        label: Management Interface
+        kind: Boolean
+        default_value: false
+        order_weight: 210
+        description: Ist dies das Management-Interface des Switches?
+    relationships:
+      - name: device
+        peer: DcimSwitch
+        identifier: device__svi_interface
+        optional: false
+        cardinality: one
+        kind: Parent
+        order_weight: 105
+      - name: vlan
+        peer: IpamVLAN
+        label: VLAN
+        cardinality: one
+        kind: Attribute
+        optional: true
+        order_weight: 220
+        description: Zugehöriges VLAN-Objekt
+      - name: ip_addresses
+        peer: IpamIPAddress
+        label: IP-Adressen
+        cardinality: many
+        kind: Attribute
+        optional: true
+        order_weight: 230
+        description: IP-Adressen auf diesem SVI

@@ -1,0 +1,100 @@
+---
+# CoreIPAddressPool: Pools pro Standort + Rolle, damit z.B. Drucker nur aus Drucker-Prefix IPs bekommen.
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: CoreIPAddressPool
+  data:
+    # --- Köln ---
+    - name: Koeln-Management
+      description: Köln – Management (Switch, etc.)
+      default_address_type: IpamIPAddress
+      default_prefix_length: 24
+      ip_namespace: default
+      resources:
+        kind: IpamPrefix
+        data:
+          - prefix: 10.10.10.0/24
+            status: active
+            role: management
+            description: Köln Management
+            location: KN
+    - name: Koeln-User
+      description: Köln – Arbeitsplatz-Netz
+      default_address_type: IpamIPAddress
+      default_prefix_length: 24
+      ip_namespace: default
+      resources:
+        kind: IpamPrefix
+        data:
+          - prefix: 10.10.100.0/24
+            status: active
+            role: user
+            description: Köln Users
+            location: KN
+    - name: Koeln-Drucker
+      description: Köln – Drucker
+      default_address_type: IpamIPAddress
+      default_prefix_length: 24
+      ip_namespace: default
+      resources:
+        kind: IpamPrefix
+        data:
+          - prefix: 10.10.120.0/24
+            status: active
+            role: printer
+            description: Köln Printers
+            location: KN
+    - name: Koeln-Server
+      description: Köln – Server
+      default_address_type: IpamIPAddress
+      default_prefix_length: 24
+      ip_namespace: default
+      resources:
+        kind: IpamPrefix
+        data:
+          - prefix: 10.10.130.0/24
+            status: active
+            role: server
+            description: Köln Servers
+            location: KN
+    # --- Bonn ---
+    - name: Bonn-Management
+      description: Bonn – Management (Switch, etc.)
+      default_address_type: IpamIPAddress
+      default_prefix_length: 24
+      ip_namespace: default
+      resources:
+        kind: IpamPrefix
+        data:
+          - prefix: 10.20.10.0/24
+            status: active
+            role: management
+            description: Bonn Management
+            location: BN
+    - name: Bonn-User
+      description: Bonn – Arbeitsplatz-Netz
+      default_address_type: IpamIPAddress
+      default_prefix_length: 24
+      ip_namespace: default
+      resources:
+        kind: IpamPrefix
+        data:
+          - prefix: 10.20.100.0/24
+            status: active
+            role: user
+            description: Bonn Users
+            location: BN
+    - name: Bonn-Drucker
+      description: Bonn – Drucker
+      default_address_type: IpamIPAddress
+      default_prefix_length: 24
+      ip_namespace: default
+      resources:
+        kind: IpamPrefix
+        data:
+          - prefix: 10.20.120.0/24
+            status: active
+            role: printer
+            description: Bonn Printers
+            location: BN

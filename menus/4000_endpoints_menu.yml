@@ -1,0 +1,72 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/menu/latest.json
+---
+# NaturalNetwork Endpoints Menu Configuration
+# Servers, Workstations, Printers, IoT
+apiVersion: infrahub.app/v1
+kind: Menu
+spec:
+  data:
+    # ==================== ENDPOINTS ====================
+    - namespace: Endpoint
+      name: MainMenu
+      label: Endgeräte
+      icon: "mdi:devices"
+      order_weight: 5000
+      children:
+        data:
+          # -- Server & Compute --
+          - namespace: Endpoint
+            name: ComputeGroup
+            label: Compute
+            icon: "mdi:server"
+            order_weight: 5100
+            children:
+              data:
+                - namespace: Endpoint
+                  name: Server
+                  label: Server
+                  kind: EndpointServer
+                  icon: "mdi:server"
+                  order_weight: 5110
+                - namespace: Endpoint
+                  name: Workstation
+                  label: Arbeitsplätze
+                  kind: EndpointWorkstation
+                  icon: "mdi:desktop-classic"
+                  order_weight: 5120
+
+          # -- Peripherie --
+          - namespace: Endpoint
+            name: PeripheralsGroup
+            label: Peripherie
+            icon: "mdi:printer"
+            order_weight: 5200
+            children:
+              data:
+                - namespace: Endpoint
+                  name: Printer
+                  label: Drucker
+                  kind: EndpointPrinter
+                  icon: "mdi:printer"
+                  order_weight: 5210
+
+          # -- IoT & Überwachung --
+          - namespace: Endpoint
+            name: IoTGroup
+            label: IoT & Überwachung
+            icon: "mdi:cctv"
+            order_weight: 5300
+            children:
+              data:
+                - namespace: Endpoint
+                  name: Camera
+                  label: Kameras
+                  kind: EndpointCamera
+                  icon: "mdi:cctv"
+                  order_weight: 5310
+                - namespace: Endpoint
+                  name: IoTDevice
+                  label: IoT Geräte
+                  kind: EndpointIoTDevice
+                  icon: "mdi:chip"
+                  order_weight: 5320

@@ -1,0 +1,14 @@
+---
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: LocationSite
+  data:
+    - name: Köln
+      shortname: KN
+      description: Köln Site
+      site_type: headquarters
+    - name: Bonn
+      shortname: BN
+      description: Bonn Site
+      site_type: branch

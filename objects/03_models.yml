@@ -1,0 +1,39 @@
+---
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: DcimModel
+  data:
+    - name: C9500-48Y4C
+      vendor: Cisco
+      description: Cisco Catalyst 9500-48Y4C (Core, L3)
+      part_number: C9500-48Y4C
+      height_u: 1
+      port_count: 48
+      port_speed: "1g"
+      uplink_count: 4
+      uplink_speed: "25g"
+      layer3_capable: true
+      default_platform: Catalyst 9500 Series
+    - name: C9300-48P-E
+      vendor: Cisco
+      description: Cisco Catalyst 9300-48P Ethernet Switch (Distribution)
+      part_number: C9300-48P-E
+      height_u: 1
+      port_count: 48
+      port_speed: "1g"
+      uplink_count: 4
+      uplink_speed: "10g"
+      layer3_capable: true
+      default_platform: Catalyst 9300 Series
+    - name: C9200-48P
+      vendor: Cisco
+      description: Cisco Catalyst 9200-48P (Access)
+      part_number: C9200-48P
+      height_u: 1
+      port_count: 48
+      port_speed: "1g"
+      uplink_count: 4
+      uplink_speed: "1g"
+      layer3_capable: false
+      default_platform: Catalyst 9200 Series

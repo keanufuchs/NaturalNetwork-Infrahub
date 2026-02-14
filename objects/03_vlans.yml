@@ -1,0 +1,19 @@
+---
+# IpamVLAN: VLANs für SVI/Trunk (HFID = name, vlan_id).
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: IpamVLAN
+  data:
+    - name: Management
+      vlan_id: 10
+      description: Switch-Management
+    - name: Users
+      vlan_id: 100
+      description: Arbeitsplätze
+    - name: Printers
+      vlan_id: 120
+      description: Drucker/Scanner
+    - name: Servers
+      vlan_id: 130
+      description: Server (nur Köln)

@@ -1,0 +1,110 @@
+---
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: DcimSwitch
+  data:
+    # --- Core (Catalyst 9500) ---
+    - name: SW-BN-CORE-01
+      location: BN
+      model:
+        - Cisco
+        - C9500-48Y4C
+      status: active
+      role: core
+      layer_capability: l3
+      routing_enabled: true
+      description: Core Switch Bonn (Gateway 10.10.x.0/24)
+    - name: SW-KN-CORE-01
+      location: KN
+      model:
+        - Cisco
+        - C9500-48Y4C
+      status: active
+      role: core
+      layer_capability: l3
+      routing_enabled: true
+      description: Core Switch Köln (Gateway 10.20.x.0/24, Hauptstandort)
+    # --- Distribution (Catalyst 9300) ---
+    - name: SW-BN-DIST-01
+      location: BN
+      model:
+        - Cisco
+        - C9300-48P-E
+      status: active
+      role: distribution
+      layer_capability: l2
+      description: Distribution Bonn
+    - name: SW-BN-DIST-02
+      location: BN
+      model:
+        - Cisco
+        - C9300-48P-E
+      status: active
+      role: distribution
+      layer_capability: l2
+      description: Distribution Bonn
+    - name: SW-KN-DIST-01
+      location: KN
+      model:
+        - Cisco
+        - C9300-48P-E
+      status: active
+      role: distribution
+      layer_capability: l2
+      description: Distribution Köln
+    - name: SW-KN-DIST-02
+      location: KN
+      model:
+        - Cisco
+        - C9300-48P-E
+      status: active
+      role: distribution
+      layer_capability: l2
+      description: Distribution Köln
+    # --- Access (Catalyst 9200) ---
+    - name: SW-BN-01
+      location: BN
+      model:
+        - Cisco
+        - C9200-48P
+      status: active
+      role: access
+      layer_capability: l2
+      description: Access Bonn
+    - name: SW-BN-02
+      location: BN
+      model:
+        - Cisco
+        - C9200-48P
+      status: active
+      role: access
+      layer_capability: l2
+      description: Access Bonn
+    - name: SW-KN-01
+      location: KN
+      model:
+        - Cisco
+        - C9200-48P
+      status: active
+      role: access
+      layer_capability: l2
+      description: Access Köln
+    - name: SW-KN-02
+      location: KN
+      model:
+        - Cisco
+        - C9200-48P
+      status: active
+      role: access
+      layer_capability: l2
+      description: Access Köln
+    - name: SW-KN-03
+      location: KN
+      model:
+        - Cisco
+        - C9200-48P
+      status: active
+      role: access
+      layer_capability: l2
+      description: Access Köln

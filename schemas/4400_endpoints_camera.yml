@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://schema.infrahub.app/infrahub/schema/latest.json
+---
+# NaturalNetwork Endpoint Camera Schema
+# Überwachungskamera / IP-Kamera
+version: "1.0"
+
+nodes:
+  # ==================== CAMERA ====================
+  - name: Camera
+    namespace: Endpoint
+    description: Überwachungskamera / IP-Kamera
+    label: Kamera
+    icon: mdi:cctv
+    inherit_from:
+      - EndpointEndpoint
+    include_in_menu: true
+    attributes:
+      - name: camera_type
+        kind: Dropdown
+        label: Kameratyp
+        order_weight: 400
+        choices:
+          - name: dome
+            label: Dome-Kamera
+          - name: bullet
+            label: Bullet-Kamera
+          - name: ptz
+            label: PTZ-Kamera
+          - name: fisheye
+            label: Fisheye-Kamera
+      - name: resolution
+        kind: Text
+        label: Auflösung
+        optional: true
+        order_weight: 410
+      - name: poe
+        kind: Boolean
+        label: PoE-fähig
+        default_value: true
+        order_weight: 420
+      - name: recording_server
+        kind: Text
+        label: Aufnahmeserver
+        optional: true
+        order_weight: 430
