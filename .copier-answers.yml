@@ -1,0 +1,11 @@
+# Changes here will be overwritten by Copier
+_commit: v0.0.1
+_src_path: https://github.com/opsmill/infrahub-template
+generators: true
+menus: true
+package_mode: true
+project_name: NaturalNetwork-Infrahub
+queries: true
+scripts: true
+tests: true
+transforms: true
