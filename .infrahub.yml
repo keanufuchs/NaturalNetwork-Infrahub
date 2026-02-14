@@ -1,3 +1,19 @@
 ---
 schemas:
   - schemas
+
+menus:
+  - menus
+
+objects:
+  - objects
+
+python_transforms:
+  - name: switch_hostname
+    file_path: transforms/switch_hostname.py
+    class_name: SwitchHostnameTransform
+    convert_query_response: true
+
+queries:
+  - name: dcim_switch_names
+    file_path: queries/dcim_switch_names.gql
