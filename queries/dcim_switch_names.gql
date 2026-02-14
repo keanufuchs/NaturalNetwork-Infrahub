@@ -1,5 +1,5 @@
-query ($name: String!) {
-  DcimSwitch(display_label__value: $name) {
+query {
+  DcimSwitch {
     edges {
       node {
         __typename
