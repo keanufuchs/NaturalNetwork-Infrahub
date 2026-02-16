@@ -14,6 +14,7 @@ spec:
       ip_address:
         data:
           address: 10.0.0.1/30
+          subnetmask: 255.255.255.252
           description: Inter-Site Link (P2P) to SW-KN-CORE-01
     - name: G1/0/2
       device: SW-BN-CORE-01
@@ -42,6 +43,7 @@ spec:
       ip_address:
         data:
           address: 10.0.0.2/30
+          subnetmask: 255.255.255.252
           description: Inter-Site Link (P2P) to SW-BN-CORE-01
     - name: G1/0/2
       device: SW-KN-CORE-01

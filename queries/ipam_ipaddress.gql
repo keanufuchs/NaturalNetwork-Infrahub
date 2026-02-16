@@ -1,0 +1,11 @@
+query {
+  IpamIPAddress {
+    edges {
+      node {
+        address {
+          value
+        }
+      }
+    }
+  }
+}

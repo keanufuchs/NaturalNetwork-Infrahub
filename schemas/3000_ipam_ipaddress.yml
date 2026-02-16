@@ -27,6 +27,11 @@ nodes:
         kind: Text
         optional: true
         order_weight: 110
+      - name: subnetmask
+        kind: Text
+        optional: false
+        order_weight: 111
+        description: The subnetmask of the IP address
       - name: status
         kind: Dropdown
         default_value: active

@@ -15,6 +15,7 @@ spec:
       ip_address:
         data:
           address: 10.20.10.1/24
+          subnetmask: 255.255.255.0
           description: SW-BN-CORE-01 Management Gateway
     - name: Vlan100
       device: SW-BN-CORE-01
@@ -24,6 +25,7 @@ spec:
       ip_address:
         data:
           address: 10.20.100.1/24
+          subnetmask: 255.255.255.0
           description: SW-BN-CORE-01 Users Gateway
     - name: Vlan120
       device: SW-BN-CORE-01
@@ -33,6 +35,7 @@ spec:
       ip_address:
         data:
           address: 10.20.120.1/24
+          subnetmask: 255.255.255.0
           description: SW-BN-CORE-01 Printers Gateway
 
     # ==================== CORE KÖLN (SW-KN-CORE-01) ====================
@@ -44,6 +47,7 @@ spec:
       ip_address:
         data:
           address: 10.10.10.1/24
+          subnetmask: 255.255.255.0
           description: SW-KN-CORE-01 Management Gateway
     - name: Vlan100
       device: SW-KN-CORE-01
@@ -53,6 +57,7 @@ spec:
       ip_address:
         data:
           address: 10.10.100.1/24
+          subnetmask: 255.255.255.0
           description: SW-KN-CORE-01 Users Gateway
     - name: Vlan120
       device: SW-KN-CORE-01
@@ -62,6 +67,7 @@ spec:
       ip_address:
         data:
           address: 10.10.120.1/24
+          subnetmask: 255.255.255.0
           description: SW-KN-CORE-01 Printers Gateway
     - name: Vlan130
       device: SW-KN-CORE-01
@@ -71,6 +77,7 @@ spec:
       ip_address:
         data:
           address: 10.10.130.1/24
+          subnetmask: 255.255.255.0
           description: SW-KN-CORE-01 Servers Gateway
 
     # ==================== DISTRIBUTION / ACCESS – nur Management (Vlan10) ====================
@@ -82,6 +89,7 @@ spec:
       ip_address:
         data:
           address: 10.20.10.2/24
+          subnetmask: 255.255.255.0
           description: SW-BN-DIST-01 Management
     - name: Vlan10
       device: SW-BN-DIST-02
@@ -91,6 +99,7 @@ spec:
       ip_address:
         data:
           address: 10.20.10.3/24
+          subnetmask: 255.255.255.0
           description: SW-BN-DIST-02 Management
     - name: Vlan10
       device: SW-BN-01
@@ -100,6 +109,7 @@ spec:
       ip_address:
         data:
           address: 10.20.10.11/24
+          subnetmask: 255.255.255.0
           description: SW-BN-01 Management
     - name: Vlan10
       device: SW-BN-02
@@ -109,6 +119,7 @@ spec:
       ip_address:
         data:
           address: 10.20.10.12/24
+          subnetmask: 255.255.255.0
           description: SW-BN-02 Management
 
     - name: Vlan10
@@ -119,6 +130,7 @@ spec:
       ip_address:
         data:
           address: 10.10.10.2/24
+          subnetmask: 255.255.255.0
           description: SW-KN-DIST-01 Management
     - name: Vlan10
       device: SW-KN-DIST-02
@@ -128,6 +140,7 @@ spec:
       ip_address:
         data:
           address: 10.10.10.3/24
+          subnetmask: 255.255.255.0
           description: SW-KN-DIST-02 Management
     - name: Vlan10
       device: SW-KN-01
@@ -137,6 +150,7 @@ spec:
       ip_address:
         data:
           address: 10.10.10.11/24
+          subnetmask: 255.255.255.0
           description: SW-KN-01 Management
     - name: Vlan10
       device: SW-KN-02
@@ -146,6 +160,7 @@ spec:
       ip_address:
         data:
           address: 10.10.10.12/24
+          subnetmask: 255.255.255.0
           description: SW-KN-02 Management
     - name: Vlan10
       device: SW-KN-03
@@ -155,4 +170,5 @@ spec:
       ip_address:
         data:
           address: 10.10.10.13/24
+          subnetmask: 255.255.255.0
           description: SW-KN-03 Management

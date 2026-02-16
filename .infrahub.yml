@@ -24,8 +24,18 @@ jinja2_transforms:
     query: "dcim_switch_interfaces"
     template_path: "transforms/jinja/switch_interfaces.j2"
 
+generator_definitions:
+  - name: ipam_ipaddress_subnetmask
+    file_path: generators/subnetmask_generator.py
+    class_name: SubnetmaskGenerator
+    convert_query_response: true
+    query: ipam_ipaddress
+    targets: IpamIPAddress
+
 queries:
   - name: dcim_switch_names
     file_path: queries/dcim_switch_names.gql
   - name: dcim_switch_interfaces
     file_path: queries/dcim_switch_interfaces.gql
+  - name: ipam_ipaddress
+    file_path: queries/ipam_ipaddress.gql
