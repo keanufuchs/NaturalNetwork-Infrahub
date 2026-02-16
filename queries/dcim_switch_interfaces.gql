@@ -27,6 +27,9 @@ query ($name: String) {
                   address {
                     value
                   }
+                  subnetmask {
+                    value
+                  }
                 }
               }
               untagged_vlan {

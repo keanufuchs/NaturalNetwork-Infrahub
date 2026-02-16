@@ -1,13 +1,11 @@
 {# =========================
    Jinja2 Template: Interfaces
-   Erwartet: gql response wie im Beispiel
    ========================= #}
 
 {% if data.DcimSwitch.edges is defined and data.DcimSwitch.edges %}
 {% for sw in data.DcimSwitch.edges %}
 {% set switch = sw.node %}
 
-{# --- Interfaces --- #}
 {% for iface_edge in switch.interfaces.edges %}
 {% set iface = iface_edge.node %}
 
@@ -27,8 +25,10 @@ interface {{ iface.name.value }}
 {# ================= L3 Routed ================= #}
 {% if iface.l2_mode.value | lower == 'routed' %}
  no switchport
-{% if iface.ip_address.node %}
- ip address {{ iface.ip_address.node.address.value }}
+
+{% if iface.ip_address.node and iface.ip_address.node.subnetmask %}
+{% set cidr = iface.ip_address.node.address.value.split('/') %}
+ ip address {{ cidr[0] }} {{ iface.ip_address.node.subnetmask.value }}
 {% endif %}
 
 {# ================= L2 Trunk ================= #}
@@ -53,6 +53,7 @@ interface {{ iface.name.value }}
 {% elif iface.l2_mode.value | lower == 'access' %}
  switchport
  switchport mode access
+
 {% if iface.untagged_vlan.node %}
  switchport access vlan {{ iface.untagged_vlan.node.vlan_id.value }}
 {% endif %}
