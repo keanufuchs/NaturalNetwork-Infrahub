@@ -6,104 +6,104 @@ spec:
   kind: DcimPhysicalInterface
   data:
     - device: SW-BN-CORE-01
-      name: Gi0/1
-      connected_endpoint: [SW-KN-CORE-01, Gi0/1]
+      name: G1/0/1
+      connected_endpoint: [SW-KN-CORE-01, G1/0/1]
     - device: SW-BN-CORE-01
-      name: Gi0/2
-      connected_endpoint: [SW-BN-DIST-01, Gi0/2]
+      name: G1/0/2
+      connected_endpoint: [SW-BN-DIST-01, E0/2]
     - device: SW-BN-CORE-01
-      name: Gi0/3
-      connected_endpoint: [SW-BN-DIST-02, Gi0/2]
+      name: G1/0/3
+      connected_endpoint: [SW-BN-DIST-02, E0/2]
     - device: SW-KN-CORE-01
-      name: Gi0/1
-      connected_endpoint: [SW-BN-CORE-01, Gi0/1]
+      name: G1/0/1
+      connected_endpoint: [SW-BN-CORE-01, G1/0/1]
     - device: SW-KN-CORE-01
-      name: Gi0/2
-      connected_endpoint: [SW-KN-DIST-01, Gi0/2]
+      name: G1/0/2
+      connected_endpoint: [SW-KN-DIST-01, E0/2]
     - device: SW-KN-CORE-01
-      name: Gi0/3
-      connected_endpoint: [SW-KN-DIST-02, Gi0/2]
+      name: G1/0/3
+      connected_endpoint: [SW-KN-DIST-02, E0/2]
     - device: SW-BN-DIST-01
-      name: Gi0/1
-      connected_endpoint: [SW-BN-DIST-02, Gi0/1]
+      name: E0/1
+      connected_endpoint: [SW-BN-DIST-02, E0/1]
     - device: SW-BN-DIST-01
-      name: Gi0/2
-      connected_endpoint: [SW-BN-CORE-01, Gi0/2]
+      name: E0/2
+      connected_endpoint: [SW-BN-CORE-01, G1/0/2]
     - device: SW-BN-DIST-01
-      name: Gi0/4
-      connected_endpoint: [SW-BN-01, Gi0/1]
+      name: E1/0
+      connected_endpoint: [SW-BN-01, E0/1]
     - device: SW-BN-DIST-01
-      name: Gi0/5
-      connected_endpoint: [SW-BN-02, Gi0/1]
+      name: E1/1
+      connected_endpoint: [SW-BN-02, E0/1]
     - device: SW-BN-DIST-02
-      name: Gi0/1
-      connected_endpoint: [SW-BN-DIST-01, Gi0/1]
+      name: E0/1
+      connected_endpoint: [SW-BN-DIST-01, E0/1]
     - device: SW-BN-DIST-02
-      name: Gi0/2
-      connected_endpoint: [SW-BN-CORE-01, Gi0/3]
+      name: E0/2
+      connected_endpoint: [SW-BN-CORE-01, G1/0/3]
     - device: SW-BN-DIST-02
-      name: Gi0/4
-      connected_endpoint: [SW-BN-01, Gi0/2]
+      name: E1/0
+      connected_endpoint: [SW-BN-01, E0/2]
     - device: SW-BN-DIST-02
-      name: Gi0/5
-      connected_endpoint: [SW-BN-02, Gi0/2]
+      name: E1/1
+      connected_endpoint: [SW-BN-02, E0/2]
     - device: SW-KN-DIST-01
-      name: Gi0/1
-      connected_endpoint: [SW-KN-DIST-02, Gi0/1]
+      name: E0/1
+      connected_endpoint: [SW-KN-DIST-02, E0/1]
     - device: SW-KN-DIST-01
-      name: Gi0/2
-      connected_endpoint: [SW-KN-CORE-01, Gi0/2]
+      name: E0/2
+      connected_endpoint: [SW-KN-CORE-01, G1/0/2]
     - device: SW-KN-DIST-01
-      name: Gi0/4
-      connected_endpoint: [SW-KN-01, Gi0/1]
+      name: E1/0
+      connected_endpoint: [SW-KN-01, E0/1]
     - device: SW-KN-DIST-01
-      name: Gi0/5
-      connected_endpoint: [SW-KN-02, Gi0/1]
+      name: E1/1
+      connected_endpoint: [SW-KN-02, E0/1]
     - device: SW-KN-DIST-01
-      name: Gi0/6
-      connected_endpoint: [SW-KN-03, Gi0/1]
+      name: E1/2
+      connected_endpoint: [SW-KN-03, E0/1]
     - device: SW-KN-DIST-02
-      name: Gi0/1
-      connected_endpoint: [SW-KN-DIST-01, Gi0/1]
+      name: E0/1
+      connected_endpoint: [SW-KN-DIST-01, E0/1]
     - device: SW-KN-DIST-02
-      name: Gi0/2
-      connected_endpoint: [SW-KN-CORE-01, Gi0/3]
+      name: E0/2
+      connected_endpoint: [SW-KN-CORE-01, G1/0/3]
     - device: SW-KN-DIST-02
-      name: Gi0/4
-      connected_endpoint: [SW-KN-01, Gi0/2]
+      name: E1/0
+      connected_endpoint: [SW-KN-01, E0/2]
     - device: SW-KN-DIST-02
-      name: Gi0/5
-      connected_endpoint: [SW-KN-02, Gi0/2]
+      name: E1/1
+      connected_endpoint: [SW-KN-02, E0/2]
     - device: SW-KN-DIST-02
-      name: Gi0/6
-      connected_endpoint: [SW-KN-03, Gi0/2]
+      name: E1/2
+      connected_endpoint: [SW-KN-03, E0/2]
     - device: SW-BN-01
-      name: Gi0/1
-      connected_endpoint: [SW-BN-DIST-01, Gi0/4]
+      name: E0/1
+      connected_endpoint: [SW-BN-DIST-01, E1/0]
     - device: SW-BN-01
-      name: Gi0/2
-      connected_endpoint: [SW-BN-DIST-02, Gi0/4]
+      name: E0/2
+      connected_endpoint: [SW-BN-DIST-02, E1/0]
     - device: SW-BN-02
-      name: Gi0/1
-      connected_endpoint: [SW-BN-DIST-01, Gi0/5]
+      name: E0/1
+      connected_endpoint: [SW-BN-DIST-01, E1/1]
     - device: SW-BN-02
-      name: Gi0/2
-      connected_endpoint: [SW-BN-DIST-02, Gi0/5]
+      name: E0/2
+      connected_endpoint: [SW-BN-DIST-02, E1/1]
     - device: SW-KN-01
-      name: Gi0/1
-      connected_endpoint: [SW-KN-DIST-01, Gi0/4]
+      name: E0/1
+      connected_endpoint: [SW-KN-DIST-01, E1/0]
     - device: SW-KN-01
-      name: Gi0/2
-      connected_endpoint: [SW-KN-DIST-02, Gi0/4]
+      name: E0/2
+      connected_endpoint: [SW-KN-DIST-02, E1/0]
     - device: SW-KN-02
-      name: Gi0/1
-      connected_endpoint: [SW-KN-DIST-01, Gi0/5]
+      name: E0/1
+      connected_endpoint: [SW-KN-DIST-01, E1/1]
     - device: SW-KN-02
-      name: Gi0/2
-      connected_endpoint: [SW-KN-DIST-02, Gi0/5]
+      name: E0/2
+      connected_endpoint: [SW-KN-DIST-02, E1/1]
     - device: SW-KN-03
-      name: Gi0/1
-      connected_endpoint: [SW-KN-DIST-01, Gi0/6]
+      name: E0/1
+      connected_endpoint: [SW-KN-DIST-01, E1/2]
     - device: SW-KN-03
-      name: Gi0/2
-      connected_endpoint: [SW-KN-DIST-02, Gi0/6]
+      name: E0/2
+      connected_endpoint: [SW-KN-DIST-02, E1/2]

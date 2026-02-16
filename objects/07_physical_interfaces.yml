@@ -7,22 +7,22 @@ spec:
   kind: DcimPhysicalInterface
   data:
     # ==================== CORE BONN (SW-BN-CORE-01) ====================
-    - name: Gi0/1
+    - name: G1/0/1
       device: SW-BN-CORE-01
       description: Inter-Site Link (P2P) to SW-KN-CORE-01
       l2_mode: routed
-    - name: Gi0/2
+    - name: G1/0/2
       device: SW-BN-CORE-01
-      description: Trunk to SW-BN-DIST-01 Gi0/2
+      description: Trunk to SW-BN-DIST-01 E0/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/3
+    - name: G1/0/3
       device: SW-BN-CORE-01
-      description: Trunk to SW-BN-DIST-02 Gi0/2
+      description: Trunk to SW-BN-DIST-02 E0/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
@@ -31,65 +31,65 @@ spec:
         - [Servers, "130"]
 
     # ==================== CORE KÖLN (SW-KN-CORE-01) ====================
-    - name: Gi0/1
+    - name: G1/0/1
       device: SW-KN-CORE-01
       description: Inter-Site Link (P2P) to SW-BN-CORE-01
       l2_mode: routed
-    - name: Gi0/2
+    - name: G1/0/2
       device: SW-KN-CORE-01
-      description: Trunk to SW-KN-DIST-01 Gi0/2
+      description: Trunk to SW-KN-DIST-01 E0/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/3
+    - name: G1/0/3
       device: SW-KN-CORE-01
-      description: Trunk to SW-KN-DIST-02 Gi0/2
+      description: Trunk to SW-KN-DIST-02 E0/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/4
+    - name: G1/0/4
       device: SW-KN-CORE-01
       description: Access – Production Server Köln (Server-KN-01)
       l2_mode: access
       untagged_vlan: [Servers, "130"]
 
     # ==================== DISTRIBUTION BONN ====================
-    - name: Gi0/1
+    - name: E0/1
       device: SW-BN-DIST-01
-      description: Trunk to SW-BN-DIST-02 Gi0/1
+      description: Trunk to SW-BN-DIST-02 E0/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/2
+    - name: E0/2
       device: SW-BN-DIST-01
-      description: Trunk to SW-BN-CORE-01 Gi0/2
+      description: Trunk to SW-BN-CORE-01 G1/0/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/4
+    - name: E1/0
       device: SW-BN-DIST-01
-      description: Trunk to SW-BN-01 Gi0/1
+      description: Trunk to SW-BN-01 E0/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/5
+    - name: E1/1
       device: SW-BN-DIST-01
-      description: Trunk to SW-BN-02 Gi0/1
+      description: Trunk to SW-BN-02 E0/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
@@ -97,36 +97,36 @@ spec:
         - [Printers, "120"]
         - [Servers, "130"]
 
-    - name: Gi0/1
+    - name: E0/1
       device: SW-BN-DIST-02
-      description: Trunk to SW-BN-DIST-01 Gi0/1
+      description: Trunk to SW-BN-DIST-01 E0/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/2
+    - name: E0/2
       device: SW-BN-DIST-02
-      description: Trunk to SW-BN-CORE-01 Gi0/3
+      description: Trunk to SW-BN-CORE-01 G1/0/3
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/4
+    - name: E1/0
       device: SW-BN-DIST-02
-      description: Trunk to SW-BN-01 Gi0/2
+      description: Trunk to SW-BN-01 E0/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/5
+    - name: E1/1
       device: SW-BN-DIST-02
-      description: Trunk to SW-BN-02 Gi0/2
+      description: Trunk to SW-BN-02 E0/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
@@ -135,45 +135,45 @@ spec:
         - [Servers, "130"]
 
     # ==================== DISTRIBUTION KÖLN ====================
-    - name: Gi0/1
+    - name: E0/1
       device: SW-KN-DIST-01
-      description: Trunk to SW-KN-DIST-02 Gi0/1
+      description: Trunk to SW-KN-DIST-02 E0/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/2
+    - name: E0/2
       device: SW-KN-DIST-01
-      description: Trunk to SW-KN-CORE-01 Gi0/2
+      description: Trunk to SW-KN-CORE-01 G1/0/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/4
+    - name: E1/0
       device: SW-KN-DIST-01
-      description: Trunk to SW-KN-01 Gi0/1
+      description: Trunk to SW-KN-01 E0/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/5
+    - name: E1/1
       device: SW-KN-DIST-01
-      description: Trunk to SW-KN-02 Gi0/1
+      description: Trunk to SW-KN-02 E0/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/6
+    - name: E1/2
       device: SW-KN-DIST-01
-      description: Trunk to SW-KN-03 Gi0/1
+      description: Trunk to SW-KN-03 E0/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
@@ -181,45 +181,45 @@ spec:
         - [Printers, "120"]
         - [Servers, "130"]
 
-    - name: Gi0/1
+    - name: E0/1
       device: SW-KN-DIST-02
-      description: Trunk to SW-KN-DIST-01 Gi0/1
+      description: Trunk to SW-KN-DIST-01 E0/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/2
+    - name: E0/2
       device: SW-KN-DIST-02
-      description: Trunk to SW-KN-CORE-01 Gi0/3
+      description: Trunk to SW-KN-CORE-01 G1/0/3
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/4
+    - name: E1/0
       device: SW-KN-DIST-02
-      description: Trunk to SW-KN-01 Gi0/2
+      description: Trunk to SW-KN-01 E0/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/5
+    - name: E1/1
       device: SW-KN-DIST-02
-      description: Trunk to SW-KN-02 Gi0/2
+      description: Trunk to SW-KN-02 E0/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/6
+    - name: E1/2
       device: SW-KN-DIST-02
-      description: Trunk to SW-KN-03 Gi0/2
+      description: Trunk to SW-KN-03 E0/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
@@ -228,132 +228,132 @@ spec:
         - [Servers, "130"]
 
     # ==================== ACCESS BONN ====================
-    - name: Gi0/1
+    - name: E0/1
       device: SW-BN-01
-      description: Trunk to SW-BN-DIST-01 Gi0/4
+      description: Trunk to SW-BN-DIST-01 E1/0
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/2
+    - name: E0/2
       device: SW-BN-01
-      description: Trunk to SW-BN-DIST-02 Gi0/4
+      description: Trunk to SW-BN-DIST-02 E1/0
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/3
+    - name: E0/3
       device: SW-BN-01
       description: Access – PC-BN-01
       l2_mode: access
       untagged_vlan: [Users, "100"]
-    - name: Gi0/4
+    - name: E0/4
       device: SW-BN-01
       description: Access – PC-BN-02
       l2_mode: access
       untagged_vlan: [Users, "100"]
 
-    - name: Gi0/1
+    - name: E0/1
       device: SW-BN-02
-      description: Trunk to SW-BN-DIST-01 Gi0/5
+      description: Trunk to SW-BN-DIST-01 E1/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/2
+    - name: E0/2
       device: SW-BN-02
-      description: Trunk to SW-BN-DIST-02 Gi0/5
+      description: Trunk to SW-BN-DIST-02 E1/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/4
+    - name: E0/4
       device: SW-BN-02
       description: Access – Drucker-BN-01
       l2_mode: access
       untagged_vlan: [Printers, "120"]
 
     # ==================== ACCESS KÖLN ====================
-    - name: Gi0/1
+    - name: E0/1
       device: SW-KN-01
-      description: Trunk to SW-KN-DIST-01 Gi0/4
+      description: Trunk to SW-KN-DIST-01 E1/0
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/2
+    - name: E0/2
       device: SW-KN-01
-      description: Trunk to SW-KN-DIST-02 Gi0/4
+      description: Trunk to SW-KN-DIST-02 E1/0
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/3
+    - name: E0/3
       device: SW-KN-01
       description: Access – PC-KN-01
       l2_mode: access
       untagged_vlan: [Users, "100"]
-    - name: Gi0/4
+    - name: E0/4
       device: SW-KN-01
       description: Access – PC-KN-02
       l2_mode: access
       untagged_vlan: [Users, "100"]
 
-    - name: Gi0/1
+    - name: E0/1
       device: SW-KN-02
-      description: Trunk to SW-KN-DIST-01 Gi0/5
+      description: Trunk to SW-KN-DIST-01 E1/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/2
+    - name: E0/2
       device: SW-KN-02
-      description: Trunk to SW-KN-DIST-02 Gi0/5
+      description: Trunk to SW-KN-DIST-02 E1/1
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/3
+    - name: E0/3
       device: SW-KN-02
       description: Access – PC-KN-03
       l2_mode: access
       untagged_vlan: [Users, "100"]
 
-    - name: Gi0/1
+    - name: E0/1
       device: SW-KN-03
-      description: Trunk to SW-KN-DIST-01 Gi0/6
+      description: Trunk to SW-KN-DIST-01 E1/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/2
+    - name: E0/2
       device: SW-KN-03
-      description: Trunk to SW-KN-DIST-02 Gi0/6
+      description: Trunk to SW-KN-DIST-02 E1/2
       l2_mode: trunk
       tagged_vlans:
         - [Management, "10"]
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
-    - name: Gi0/3
+    - name: E0/3
       device: SW-KN-03
       description: Access – Drucker-KN-01
       l2_mode: access
