@@ -1,0 +1,65 @@
+{# =========================
+   Jinja2 Template: Interfaces
+   Erwartet: gql response wie im Beispiel
+   ========================= #}
+
+{% if data.DcimSwitch.edges is defined and data.DcimSwitch.edges %}
+{% for sw in data.DcimSwitch.edges %}
+{% set switch = sw.node %}
+
+{# --- Interfaces --- #}
+{% for iface_edge in switch.interfaces.edges %}
+{% set iface = iface_edge.node %}
+
+interface {{ iface.name.value }}
+ description {{ iface.description.value | default('') }}
+
+{% if iface.enabled.value is defined and not iface.enabled.value %}
+ shutdown
+{% else %}
+ no shutdown
+{% endif %}
+
+{% if iface.mtu.value %}
+ mtu {{ iface.mtu.value }}
+{% endif %}
+
+{# ================= L3 Routed ================= #}
+{% if iface.l2_mode.value | lower == 'routed' %}
+ no switchport
+{% if iface.ip_address.node %}
+ ip address {{ iface.ip_address.node.address.value }}
+{% endif %}
+
+{# ================= L2 Trunk ================= #}
+{% elif iface.l2_mode.value | lower == 'trunk' %}
+ switchport
+ switchport mode trunk
+
+{% set vlan_list = [] %}
+{% for vlan in iface.tagged_vlans.edges %}
+{% set _ = vlan_list.append(vlan.node.vlan_id.value) %}
+{% endfor %}
+
+{% if vlan_list %}
+ switchport trunk allowed vlan {{ vlan_list | join(',') }}
+{% endif %}
+
+{% if iface.untagged_vlan.node %}
+ switchport trunk native vlan {{ iface.untagged_vlan.node.vlan_id.value }}
+{% endif %}
+
+{# ================= Access ================= #}
+{% elif iface.l2_mode.value | lower == 'access' %}
+ switchport
+ switchport mode access
+{% if iface.untagged_vlan.node %}
+ switchport access vlan {{ iface.untagged_vlan.node.vlan_id.value }}
+{% endif %}
+
+{% endif %}
+
+!
+{% endfor %}
+{% endfor %}
+{% endif %}

@@ -19,9 +19,13 @@ jinja2_transforms:
     description: "Transform the switch hostname"
     query: "dcim_switch_names"
     template_path: "transforms/jinja/switch_hostname.j2"
+  - name: switch_interfaces
+    description: "Transform the switch interfaces"
+    query: "dcim_switch_interfaces"
+    template_path: "transforms/jinja/switch_interfaces.j2"
 
 queries:
   - name: dcim_switch_names
     file_path: queries/dcim_switch_names.gql
-  - name: dcim_switch_interface
-    file_path: queries/dcim_switch_interface.gql
+  - name: dcim_switch_interfaces
+    file_path: queries/dcim_switch_interfaces.gql
