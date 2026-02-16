@@ -36,7 +36,7 @@ nodes:
             label: 100 Gbps
       - name: l2_mode
         kind: Dropdown
-        label: Layer 2 Modus
+        label: Mode
         optional: true
         order_weight: 210
         choices:
@@ -55,10 +55,10 @@ nodes:
         optional: true
         order_weight: 220
     relationships:
-      - name: ip_addresses
+      - name: ip_address
         peer: IpamIPAddress
-        label: IP-Adressen
-        cardinality: many
+        label: IP-Adresse
+        cardinality: one
         kind: Attribute
         optional: true
         order_weight: 230

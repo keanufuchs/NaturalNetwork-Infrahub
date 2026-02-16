@@ -72,11 +72,11 @@ nodes:
         optional: true
         order_weight: 220
         description: Zugehöriges VLAN-Objekt
-      - name: ip_addresses
+      - name: ip_address
         peer: IpamIPAddress
-        label: IP-Adressen
-        cardinality: many
+        label: IP-Adresse
+        cardinality: one
         kind: Attribute
         optional: true
         order_weight: 230
-        description: IP-Adressen auf diesem SVI
+        description: IP-Adresse auf diesem SVI

@@ -1,0 +1,6 @@
+{% if data.DcimSwitch.edges and data.DcimSwitch.edges is iterable %}
+{% for switch in data["DcimSwitch"]["edges"] %}
+{% set hostname = switch.node.name.value %}
+hostname {{ hostname }}
+{% endfor %}
+{% endif %}

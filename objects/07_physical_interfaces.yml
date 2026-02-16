@@ -11,6 +11,10 @@ spec:
       device: SW-BN-CORE-01
       description: Inter-Site Link (P2P) to SW-KN-CORE-01
       l2_mode: routed
+      ip_address:
+        data:
+          address: 10.0.0.1/30
+          description: Inter-Site Link (P2P) to SW-KN-CORE-01
     - name: G1/0/2
       device: SW-BN-CORE-01
       description: Trunk to SW-BN-DIST-01 E0/2
@@ -35,6 +39,10 @@ spec:
       device: SW-KN-CORE-01
       description: Inter-Site Link (P2P) to SW-BN-CORE-01
       l2_mode: routed
+      ip_address:
+        data:
+          address: 10.0.0.2/30
+          description: Inter-Site Link (P2P) to SW-BN-CORE-01
     - name: G1/0/2
       device: SW-KN-CORE-01
       description: Trunk to SW-KN-DIST-01 E0/2

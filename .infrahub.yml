@@ -10,10 +10,18 @@ objects:
 
 python_transforms:
   - name: switch_hostname
-    file_path: transforms/switch_hostname.py
+    file_path: transforms/python/switch_hostname.py
     class_name: SwitchHostnameTransform
     convert_query_response: true
+
+jinja2_transforms:
+  - name: switch_hostname
+    description: "Transform the switch hostname"
+    query: "dcim_switch_names"
+    template_path: "transforms/jinja/switch_hostname.j2"
 
 queries:
   - name: dcim_switch_names
     file_path: queries/dcim_switch_names.gql
+  - name: dcim_switch_interface
+    file_path: queries/dcim_switch_interface.gql
