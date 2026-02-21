@@ -34,20 +34,20 @@ generics:
         order_weight: 112
       - name: status
         kind: Dropdown
-        default_value: active
+        default_value: used
         order_weight: 114
         choices:
-          - name: active
-            label: Aktiv
+          - name: used
+            label: Used
             color: "#7fbf7f"
           - name: free
-            label: Frei
+            label: Free
             color: "#CDEACC"
           - name: reserved
-            label: Reserviert
+            label: Reserved
             color: "#ffff7f"
           - name: disabled
-            label: Deaktiviert
+            label: Disabled
             color: "#bfbfbf"
       - name: mtu
         label: MTU

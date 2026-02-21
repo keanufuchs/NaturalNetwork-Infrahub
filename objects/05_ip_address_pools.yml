@@ -14,7 +14,7 @@ spec:
       resources:
         kind: IpamPrefix
         data:
-          - prefix: 10.10.10.0/24
+          - prefix: 10.210.10.0/24
             status: active
             role: management
             description: Köln Management
@@ -27,7 +27,7 @@ spec:
       resources:
         kind: IpamPrefix
         data:
-          - prefix: 10.10.100.0/24
+          - prefix: 10.210.100.0/24
             status: active
             role: user
             description: Köln Users
@@ -40,7 +40,7 @@ spec:
       resources:
         kind: IpamPrefix
         data:
-          - prefix: 10.10.120.0/24
+          - prefix: 10.210.120.0/24
             status: active
             role: printer
             description: Köln Printers
@@ -53,7 +53,7 @@ spec:
       resources:
         kind: IpamPrefix
         data:
-          - prefix: 10.10.130.0/24
+          - prefix: 10.210.130.0/24
             status: active
             role: server
             description: Köln Servers
@@ -67,7 +67,7 @@ spec:
       resources:
         kind: IpamPrefix
         data:
-          - prefix: 10.20.10.0/24
+          - prefix: 10.220.10.0/24
             status: active
             role: management
             description: Bonn Management
@@ -80,7 +80,7 @@ spec:
       resources:
         kind: IpamPrefix
         data:
-          - prefix: 10.20.100.0/24
+          - prefix: 10.220.100.0/24
             status: active
             role: user
             description: Bonn Users
@@ -93,7 +93,7 @@ spec:
       resources:
         kind: IpamPrefix
         data:
-          - prefix: 10.20.120.0/24
+          - prefix: 10.220.120.0/24
             status: active
             role: printer
             description: Bonn Printers

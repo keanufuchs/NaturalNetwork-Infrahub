@@ -266,6 +266,18 @@ spec:
       description: Access – PC-BN-02
       l2_mode: access
       untagged_vlan: [Users, "100"]
+    - name: E0/5
+      device: SW-BN-01
+      status: free
+    - name: E0/6
+      device: SW-BN-01
+      status: free
+    - name: E0/7
+      device: SW-BN-01
+      status: free
+    - name: E0/8
+      device: SW-BN-01
+      status: free
 
     - name: E0/1
       device: SW-BN-02
@@ -276,6 +288,9 @@ spec:
         - [Users, "100"]
         - [Printers, "120"]
         - [Servers, "130"]
+    - name: E0/3
+      device: SW-BN-02
+      status: free
     - name: E0/2
       device: SW-BN-02
       description: Trunk to SW-BN-DIST-02 E1/1
@@ -290,6 +305,18 @@ spec:
       description: Access – Drucker-BN-01
       l2_mode: access
       untagged_vlan: [Printers, "120"]
+    - name: E0/5
+      device: SW-BN-02
+      status: free
+    - name: E0/6
+      device: SW-BN-02
+      status: free
+    - name: E0/7
+      device: SW-BN-02
+      status: free
+    - name: E0/8
+      device: SW-BN-02
+      status: free
 
     # ==================== ACCESS KÖLN ====================
     - name: E0/1
@@ -320,6 +347,18 @@ spec:
       description: Access – PC-KN-02
       l2_mode: access
       untagged_vlan: [Users, "100"]
+    - name: E0/5
+      device: SW-KN-01
+      status: free
+    - name: E0/6
+      device: SW-KN-01
+      status: free
+    - name: E0/7
+      device: SW-KN-01
+      status: free
+    - name: E0/8
+      device: SW-KN-01
+      status: free
 
     - name: E0/1
       device: SW-KN-02
@@ -344,6 +383,21 @@ spec:
       description: Access – PC-KN-03
       l2_mode: access
       untagged_vlan: [Users, "100"]
+    - name: E0/4
+      device: SW-KN-02
+      status: free
+    - name: E0/5
+      device: SW-KN-02
+      status: free
+    - name: E0/6
+      device: SW-KN-02
+      status: free
+    - name: E0/7
+      device: SW-KN-02
+      status: free
+    - name: E0/8
+      device: SW-KN-02
+      status: free
 
     - name: E0/1
       device: SW-KN-03
@@ -368,3 +422,18 @@ spec:
       description: Access – Drucker-KN-01
       l2_mode: access
       untagged_vlan: [Printers, "120"]
+    - name: E0/4
+      device: SW-KN-03
+      status: free
+    - name: E0/5
+      device: SW-KN-03
+      status: free
+    - name: E0/6
+      device: SW-KN-03
+      status: free
+    - name: E0/7
+      device: SW-KN-03
+      status: free
+    - name: E0/8
+      device: SW-KN-03
+      status: free
