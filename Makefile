@@ -60,8 +60,13 @@ load-menu: ## Load schemas into InfraHub using infrahubctl
 	@echo "Loading menu schemas..."
 	uv run infrahubctl menu load --branch $(BRANCH_NAME) menus/ || true
 
+.PHONY: rebase-branch
+rebase-branch: check-branch ## Rebase InfraHub branch with main (fixes HFID upsert on fresh branches)
+	@echo "Rebasing InfraHub branch $(BRANCH_NAME) with main..."
+	uv run infrahubctl branch rebase $(BRANCH_NAME)
+
 .PHONY: load-objects
-load-objects: check-branch ## Load objects into InfraHub using infrahubctl
+load-objects: check-branch rebase-branch ## Load objects into InfraHub using infrahubctl
 	@echo "Loading objects..."
 	uv run infrahubctl object load --branch $(BRANCH_NAME) objects || true
 
