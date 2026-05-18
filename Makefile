@@ -79,6 +79,21 @@ load-schema: check-branch ## Load schema into InfraHub using infrahubctl
 reset-branch: check-branch delete-branch create-branch load-schema load-menu load-objects
 	@echo "Resetting branch: $(BRANCH_NAME)..."
 
+.PHONY: delete-agent-sessions
+delete-agent-sessions: ## Delete all agent-session-* branches in InfraHub
+	@echo "Fetching agent-session branches..."
+	@branches=$$(uv run infrahubctl branch list 2>/dev/null | grep 'agent-session-' | awk '{print $$1}'); \
+	if [ -z "$$branches" ]; then \
+		echo "No agent-session branches found."; \
+	else \
+		echo "Deleting branches:"; \
+		for branch in $$branches; do \
+			echo "  - $$branch"; \
+			uv run infrahubctl branch delete $$branch || true; \
+		done; \
+		echo "Done."; \
+	fi
+
 # Testing targets
 .PHONY: test
 test: ## Run tests using pytest

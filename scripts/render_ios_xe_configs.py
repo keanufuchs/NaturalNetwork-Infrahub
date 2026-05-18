@@ -66,7 +66,7 @@ def _fetch_transform(switch_name: str) -> str:
     params = urllib.parse.urlencode({"name": switch_name, "branch": INFRAHUB_BRANCH})
     url = f"{INFRAHUB_ADDRESS}/api/transform/python/ios_xe_switch_config?{params}"
     with urllib.request.urlopen(url) as resp:
-        return resp.read().decode()
+        return json.loads(resp.read().decode())
 
 
 def main() -> None:
