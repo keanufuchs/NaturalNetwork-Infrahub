@@ -33,7 +33,6 @@ generator_definitions:
     class_name: SubnetmaskGenerator
     convert_query_response: true
     query: ipam_ipaddress
-    targets: IpamIPAddress
 
 queries:
   - name: dcim_switch_names
