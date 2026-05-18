@@ -1,6 +1,12 @@
+import ipaddress
+
 from jinja2 import Environment, FileSystemLoader
 
 from infrahub_sdk.transforms import InfrahubTransform
+
+
+def _prefix_to_netmask(prefix_cidr: str) -> str:
+    return str(ipaddress.ip_network(prefix_cidr, strict=False).netmask)
 
 
 class IosXeSwitchConfigTransform(InfrahubTransform):
@@ -20,6 +26,7 @@ class IosXeSwitchConfigTransform(InfrahubTransform):
             trim_blocks=True,
             lstrip_blocks=True,
         )
+        env.filters["prefix_to_netmask"] = _prefix_to_netmask
         template = env.get_template("ios_xe_switch_config.j2")
         return template.render(switch=switch, vlans=vlans)
 
