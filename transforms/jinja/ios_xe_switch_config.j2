@@ -29,7 +29,9 @@ interface {{ iface.name.value }}
  ip address {{ addr }} {{ iface.ip_address.node.subnetmask.value }}
 {% endif %}
 {% elif iface.l2_mode.value | lower == 'trunk' %}
- switchport
+{% if iface.name.value[:1] == 'E' %}
+ switchport trunk encapsulation dot1q
+{% endif %}
  switchport mode trunk
 {% set vlan_ids = iface.tagged_vlans.edges | map(attribute='node.vlan_id.value') | list | sort %}
 {% if vlan_ids %}
@@ -61,6 +63,7 @@ interface {{ svi.name.value }}
 {% set addr = svi.ip_address.node.address.value.split('/')[0] %}
  ip address {{ addr }} {{ svi.ip_address.node.subnetmask.value }}
 {% endif %}
+ no autostate
 {% if svi.enabled.value is defined and not svi.enabled.value %}
  shutdown
 {% else %}
@@ -70,8 +73,17 @@ interface {{ svi.name.value }}
 {% endfor %}
 {% if switch.routing_enabled.value %}
 ip routing
-!
+{% else %}
+no ip routing
+{% for svi_edge in switch.svi_interfaces.edges %}
+{% set svi = svi_edge.node %}
+{% if svi.name.value == 'Vlan10' and svi.ip_address.node and svi.ip_address.node.address.value %}
+{% set ip_parts = svi.ip_address.node.address.value.split('/')[0].split('.') %}
+ip default-gateway {{ ip_parts[0] }}.{{ ip_parts[1] }}.{{ ip_parts[2] }}.1
 {% endif %}
+{% endfor %}
+{% endif %}
+!
 {% if switch.static_routes.edges %}
 {% for route_edge in switch.static_routes.edges | sort(attribute='node.description.value') %}
 {% set route = route_edge.node %}
