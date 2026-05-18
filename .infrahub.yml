@@ -13,6 +13,9 @@ python_transforms:
     file_path: transforms/python/switch_hostname.py
     class_name: SwitchHostnameTransform
     convert_query_response: true
+  - name: ios_xe_switch_config
+    file_path: transforms/python/ios_xe_switch_config.py
+    class_name: IosXeSwitchConfigTransform
 
 jinja2_transforms:
   - name: switch_hostname
@@ -41,3 +44,7 @@ queries:
     file_path: queries/ipam_ipaddress.gql
   - name: cml_lab_topology
     file_path: queries/cml_lab_topology.gql
+  - name: dcim_switch_full_config
+    file_path: queries/dcim_switch_full_config.gql
+  - name: dcim_switch_ios_xe_config
+    file_path: queries/dcim_switch_ios_xe_config.gql
