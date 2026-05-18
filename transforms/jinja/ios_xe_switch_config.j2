@@ -1,0 +1,66 @@
+hostname {{ switch.name.value }}
+!
+vtp mode transparent
+!
+{% for vlan in vlans %}
+vlan {{ vlan.vlan_id }}
+ name {{ vlan.name }}
+!
+{% endfor %}
+{% for iface_edge in switch.interfaces.edges | sort(attribute='node.name.value') %}
+{% set iface = iface_edge.node %}
+interface {{ iface.name.value }}
+{% if iface.description.value %}
+ description {{ iface.description.value }}
+{% endif %}
+{% if iface.l2_mode.value | lower == 'routed' %}
+ no switchport
+{% if iface.ip_address.node and iface.ip_address.node.address.value %}
+{% set addr = iface.ip_address.node.address.value.split('/')[0] %}
+ ip address {{ addr }} {{ iface.ip_address.node.subnetmask.value }}
+{% endif %}
+{% elif iface.l2_mode.value | lower == 'trunk' %}
+ switchport
+ switchport mode trunk
+{% set vlan_ids = iface.tagged_vlans.edges | map(attribute='node.vlan_id.value') | list | sort %}
+{% if vlan_ids %}
+ switchport trunk allowed vlan {{ vlan_ids | join(',') }}
+{% endif %}
+{% if iface.untagged_vlan.node %}
+ switchport trunk native vlan {{ iface.untagged_vlan.node.vlan_id.value }}
+{% endif %}
+{% elif iface.l2_mode.value | lower == 'access' %}
+ switchport mode access
+{% if iface.untagged_vlan.node %}
+ switchport access vlan {{ iface.untagged_vlan.node.vlan_id.value }}
+{% endif %}
+{% endif %}
+{% if iface.enabled.value is defined and not iface.enabled.value %}
+ shutdown
+{% else %}
+ no shutdown
+{% endif %}
+!
+{% endfor %}
+{% for svi_edge in switch.svi_interfaces.edges | sort(attribute='node.name.value') %}
+{% set svi = svi_edge.node %}
+interface {{ svi.name.value }}
+{% if svi.description.value %}
+ description {{ svi.description.value }}
+{% endif %}
+{% if svi.ip_address.node and svi.ip_address.node.address.value %}
+{% set addr = svi.ip_address.node.address.value.split('/')[0] %}
+ ip address {{ addr }} {{ svi.ip_address.node.subnetmask.value }}
+{% endif %}
+{% if svi.enabled.value is defined and not svi.enabled.value %}
+ shutdown
+{% else %}
+ no shutdown
+{% endif %}
+!
+{% endfor %}
+{% if switch.routing_enabled.value %}
+ip routing
+!
+{% endif %}
+end

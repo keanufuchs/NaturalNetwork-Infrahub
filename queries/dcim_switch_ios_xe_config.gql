@@ -1,0 +1,62 @@
+query ($name: String) {
+  DcimSwitch(name__value: $name) {
+    edges {
+      node {
+        name { value }
+        role { value }
+        routing_enabled { value }
+        interfaces {
+          edges {
+            node {
+              name { value }
+              description { value }
+              enabled { value }
+              l2_mode { value }
+              ip_address {
+                node {
+                  address { value }
+                  subnetmask { value }
+                }
+              }
+              untagged_vlan {
+                node {
+                  vlan_id { value }
+                  name { value }
+                }
+              }
+              tagged_vlans {
+                edges {
+                  node {
+                    vlan_id { value }
+                    name { value }
+                  }
+                }
+              }
+            }
+          }
+        }
+        svi_interfaces {
+          edges {
+            node {
+              name { value }
+              description { value }
+              enabled { value }
+              vlan {
+                node {
+                  vlan_id { value }
+                  name { value }
+                }
+              }
+              ip_address {
+                node {
+                  address { value }
+                  subnetmask { value }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

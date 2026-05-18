@@ -1,0 +1,34 @@
+query CmlLabTopology($site: String) {
+  DcimSwitch(location__name__value: $site) {
+    edges {
+      node {
+        name { value }
+        role { value }
+        location {
+          node {
+            name { value }
+          }
+        }
+        interfaces {
+          edges {
+            node {
+              name { value }
+              connected_endpoint {
+                node {
+                  name { value }
+                  ... on DcimPhysicalInterface {
+                    device {
+                      node {
+                        name { value }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
