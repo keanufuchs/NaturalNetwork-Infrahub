@@ -39,3 +39,5 @@ queries:
     file_path: queries/dcim_switch_interfaces.gql
   - name: ipam_ipaddress
     file_path: queries/ipam_ipaddress.gql
+  - name: cml_lab_topology
+    file_path: queries/cml_lab_topology.gql
