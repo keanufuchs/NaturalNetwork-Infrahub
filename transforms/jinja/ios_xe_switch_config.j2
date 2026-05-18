@@ -1,6 +1,15 @@
 hostname {{ switch.name.value }}
 !
-vtp mode transparent
+no logging console
+!
+vtp mode off
+!
+no ip domain lookup
+ip domain name natural-network.lab
+username cisco privilege 15 secret cisco
+!
+crypto key generate rsa modulus 2048
+ip ssh version 2
 !
 {% for vlan in vlans %}
 vlan {{ vlan.vlan_id }}
@@ -63,4 +72,19 @@ interface {{ svi.name.value }}
 ip routing
 !
 {% endif %}
+{% if switch.static_routes.edges %}
+{% for route_edge in switch.static_routes.edges | sort(attribute='node.description.value') %}
+{% set route = route_edge.node %}
+{% set dest_prefix = route.destination.node.prefix.value %}
+{% set dest_ip = dest_prefix.split('/')[0] %}
+ip route {{ dest_ip }} {{ dest_prefix | prefix_to_netmask }} {{ route.next_hop_ip.value.split('/')[0] }}
+{% endfor %}
+!
+{% endif %}
+line vty 0 4
+ transport input ssh
+ login local
+!
+netconf-yang
+!
 end

@@ -1,8 +1,25 @@
 ---
-# IpamPrefix: Standalone-Prefixe (optional).
-# Die für CoreIPAddressPool genutzten Prefixe sind in 05_ip_address_pools.yml als nested resources definiert.
+# IpamPrefix: Standalone-Prefixe.
+# Die für CoreIPAddressPool genutzten /24-Prefixe sind in 05_ip_address_pools.yml als nested resources definiert.
+# Hier: Standort-Supernets (Routing-Destination für Static Routes) und Inter-Site P2P-Link.
 apiVersion: infrahub.app/v1
 kind: Object
 spec:
   kind: IpamPrefix
-  data: []
+  data:
+    # Standort-Supernets (Ziel der inter-site Static Routes)
+    - prefix: 10.210.0.0/16
+      status: active
+      role: intersite
+      description: Köln Standort-Supernet
+      location: KN
+    - prefix: 10.220.0.0/16
+      status: active
+      role: intersite
+      description: Bonn Standort-Supernet
+      location: BN
+    # Inter-Site P2P-Link
+    - prefix: 10.0.0.0/30
+      status: active
+      role: intersite
+      description: Inter-Site P2P Link BN–KN

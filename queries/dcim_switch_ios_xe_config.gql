@@ -56,6 +56,20 @@ query ($name: String) {
             }
           }
         }
+        static_routes {
+          edges {
+            node {
+              description { value }
+              metric { value }
+              next_hop_ip { value }
+              destination {
+                node {
+                  prefix { value }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

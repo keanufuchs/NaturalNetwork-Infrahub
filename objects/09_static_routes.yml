@@ -1,0 +1,21 @@
+---
+# IpamStaticRoute: Statische Inter-Site Routen zwischen BN und KN.
+# Lädt nach 07_physical_interfaces.yml (Next-Hop IPs werden dort als inline IpamIPAddress erzeugt).
+apiVersion: infrahub.app/v1
+kind: Object
+spec:
+  kind: IpamStaticRoute
+  data:
+    # SW-BN-CORE-01: Route zu Köln via KN-CORE P2P-IP (10.0.0.2)
+    - description: Route zu Köln Standort-Supernet
+      device: SW-BN-CORE-01
+      destination: ["10.210.0.0/16", "default"]
+      next_hop_ip: "10.0.0.2"
+      status: active
+
+    # SW-KN-CORE-01: Route zu Bonn via BN-CORE P2P-IP (10.0.0.1)
+    - description: Route zu Bonn Standort-Supernet
+      device: SW-KN-CORE-01
+      destination: ["10.220.0.0/16", "default"]
+      next_hop_ip: "10.0.0.1"
+      status: active

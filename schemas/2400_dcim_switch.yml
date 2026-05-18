@@ -96,3 +96,10 @@ nodes:
         optional: true
         cardinality: many
         description: VLANs auf diesem Switch
+      - name: static_routes
+        label: Statische Routen
+        peer: IpamStaticRoute
+        optional: true
+        cardinality: many
+        kind: Component
+        order_weight: 300
